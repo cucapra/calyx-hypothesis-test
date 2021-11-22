@@ -44,7 +44,7 @@ def test_addition(x, y):
 
 
 # execute through icarus verilog
-# os.system('fud e add.futil -s verilog.data data.json --to dat -q --through icarus-verilog')
+# os.system('fud e std_add.futil -s verilog.data data.json --to dat -q --through icarus-verilog')
 
 if __name__ == "__main__":
     test_addition()

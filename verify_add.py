@@ -1,6 +1,6 @@
 import subprocess
 import json
-from hypothesis import given, note, settings, strategies as st
+from hypothesis import given, settings, strategies as st
 import logging
 import os
 
@@ -38,7 +38,7 @@ def test_addition(x, y):
     with open('data.json', 'w') as json_file:
         json.dump(input_data, json_file)
     subprocess.Popen(["cd", "/Users/crystalhu/Calyx"], env=dict(os.environ))
-    os.system("fud e add.futil -s verilog.data data.json --to dat -q --through icarus-verilog > result.json")
+    os.system("fud e std_add.futil -s verilog.data data.json --to dat -q --through icarus-verilog > result.json")
     # read result from data
     try:
         with open('result.json') as f_2:
@@ -51,7 +51,7 @@ def test_addition(x, y):
 
 
 # execute through icarus verilog
-# os.system('fud e add.futil -s verilog.data data.json --to dat -q --through icarus-verilog')
+# os.system('fud e std_add.futil -s verilog.data data.json --to dat -q --through icarus-verilog')
 
 if __name__ == "__main__":
     test_addition()
