@@ -30,14 +30,6 @@ def construct_json(x_lst, y_lst):
                 "is_signed": true,
                 "width": 32
             }
-        },
-        "out_quot": {
-            "data": [0, 0, 0, 0],
-            "format": {
-                "numeric_type": "bitnum",
-                "is_signed": true,
-                "width": 32
-            }
         }
     }
     return my_input
