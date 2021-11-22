@@ -1,6 +1,5 @@
-import subprocess
 import json
-from hypothesis import given, note, settings, strategies as st
+from hypothesis import given, settings, strategies as st
 import logging
 import os
 
@@ -68,14 +67,15 @@ def test_sdivider(x0, x1, x2, x3, y0, y1, y2, y3):
             quot = result_data['memories']['out_quot']
             rem = result_data['memories']['out_rem']
             for i in range(len(quot)):
-                if quot[i] == 0:
-                    assert True
+                if quot[i] * y_lst[i] + rem[i] > 0:
+                    assert (quot[i] * y_lst[i] + rem[i]) % (2 ** 31) == x_lst[i], f'positive assert error at index {i} expect A = {quot[i] * y_lst[i] + rem[i]} '
                 else:
-                    assert (quot[i] == 0 or (quot[i] + rem[i] / y_lst[i] == x_lst[i] / y_lst[i]))
+                    assert (quot[i] * y_lst[i] + rem[i]) % (-2 ** 31) == x_lst[i], f'positive assert error at index {i} expect A = {quot[i] * y_lst[i] + rem[i]} '
                 logging.info("Success.")
     except ArithmeticError as ae:
         logging.error(ae)
     except Exception as e:
+        logging.error(f'fail with error {e}')
         logging.error(f'fail with x = {x_lst}, y = {y_lst}, quo = {quot}, rem = {rem}.')
 
 
