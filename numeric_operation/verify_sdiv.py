@@ -71,9 +71,10 @@ def test_sdivider(x0, x1, x2, x3, y0, y1, y2, y3):
                 # need to round towards 0
                 assert rem[i] == (x_lst[i] % y_lst[i]), f'assert error at index {i} with r = {rem[i]}, but expect {x_lst[i] % y_lst[i]}'
                 if truediv(x_lst[i], y_lst[i]) < quot[i] < truediv(x_lst[i], y_lst[i]) + 1:
-                    assert quot[i] == floordiv(x_lst[i], y_lst[i]) + 1, f'assert error at index {i} with q = {quot[i]}, but expect {floordiv(x_lst[i], y_lst[i]) + 1}'
+                    assert quot[i] == floordiv(x_lst[i], y_lst[i]) + 1, f'assert error at index {i} with q = {quot[i]}, but expect {floordiv(x_lst[i], y_lst[i]) + 1} '
                 else:
-                    assert quot[i] == floordiv(x_lst[i], y_lst[i]), f'assert error at index {i} with q = {quot[i]}, but expect {floordiv(x_lst[i], y_lst[i])}'
+                    assert quot[i] == floordiv(x_lst[i], y_lst[i]), f'assert error at index {i} with q = {quot[i]}, ' \
+                                                                    f'but expect {floordiv(x_lst[i], y_lst[i])} '
                 logging.info("Success.")
     except ArithmeticError as ae:
         logging.error(ae)
